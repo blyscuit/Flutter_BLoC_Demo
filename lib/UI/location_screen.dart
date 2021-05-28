@@ -3,6 +3,7 @@ import 'package:restaurant_finder/BLoC/bloc_provider.dart';
 import 'package:restaurant_finder/BLoC/location_bloc.dart';
 import 'package:restaurant_finder/BLoC/location_query_bloc.dart';
 import 'package:restaurant_finder/DataLayer/location.dart';
+import 'package:restaurant_finder/UI/restaurant_screen.dart';
 
 class LocationScreen extends StatelessWidget {
   final bool isFullScreenDialog;
@@ -74,11 +75,9 @@ class LocationScreen extends StatelessWidget {
             // 3
             final locationBloc = BlocProvider.of<LocationBloc>(context);
             locationBloc.selectLocation(location);
-
-            if (isFullScreenDialog) {
-              Navigator.of(context).pop();
-            }
-          },
+              Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => RestaurantScreen(location: location)));
+            },
         );
       },
     );

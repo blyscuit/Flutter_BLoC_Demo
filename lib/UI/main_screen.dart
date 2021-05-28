@@ -14,11 +14,7 @@ class MainScreen extends StatelessWidget {
       builder: (context, snapshot) {
         final location = snapshot.data;
 
-        // 2
-        if (location == null) {
-          return LocationScreen();
-        }
-        return RestaurantScreen(location: location);
+        return LocationScreen();
       },
     );
   }
